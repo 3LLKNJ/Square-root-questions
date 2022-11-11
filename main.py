@@ -58,7 +58,10 @@ if startingScene == '0':
     currentQuestionNumber.place(relx=0.5, rely = 0.3, anchor='n')
 
     # Submit Answer
-    answerEntry.place(relx=0.5,rely=0.55, anchor='n')
+    answerEntry.place(relx=0.5,rely=0.6, anchor='n')
+
+    showAnswer = Label(master, text='RESPOSTA\nCORRETA', font=('Arial', 50), justify=CENTER)
+    showNumberAnswer = Label(master,text='▢▢▢', font=('Arial', 100), justify=CENTER)
 
 ############################################################################################################################################################
 ####################################################################  Answer Scene (1)  ####################################################################
@@ -71,6 +74,12 @@ else:
     currentQuestionNumber = Label(text="▢▢▢▢▢▢", font=("Arial", 130), justify=CENTER)
     currentQuestionNumber.place(relx=0.35, rely = 0.3, anchor='n')
 
+    # Show Answer
+    showAnswer = Label(master, text='RESPOSTA\nCORRETA', font=('Arial', 50), justify=CENTER)
+    showNumberAnswer = Label(master,text='▢▢▢', font=('Arial', 80), justify=CENTER)
+    showAnswer.place(relx=0.8, rely=0.35, anchor='n')
+    showNumberAnswer.place(relx=0.8, rely=0.55, anchor='n')
+
 ############################################################################################################################################################
 ##########################################################################  Code  ##########################################################################
 ############################################################################################################################################################
@@ -79,6 +88,7 @@ def generateQuestion():
     global currentAnswer
     currentAnswer = random.randint(100,1000)
     currentQuestionNumber.configure(text=str(currentAnswer**2))
+    showNumberAnswer.configure(text=str(currentAnswer))
 
 generateQuestion()
 
@@ -177,6 +187,8 @@ def changeScene():
     submitButton.destroy()
     correctButton.destroy()
     wrongButton.destroy()
+    showAnswer.destroy()
+    showNumberAnswer.destroy()
 
     correctAnswers = 0
 
